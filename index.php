@@ -1,19 +1,15 @@
 <?php
+include_once 'components/QueryBuilder.php';
+
 function dd($data){
     echo "<pre>";
     var_dump($data);
     echo "</pre>";
     die;
-
 }
 
-$pdo = new PDO ('mysql:host=127.0.0.1;dbname=level_3_1', 'root', 'root');
-$sql = "SELECT * FROM posts";
-$statement = $pdo->prepare($sql);
-$statement->execute();
-$posts = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-dd($posts);
+$posts = new QueryBuilder;
+$posts = $posts->getAll();
 
 ?>
 <!DOCTYPE html>
