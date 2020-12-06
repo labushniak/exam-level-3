@@ -8,8 +8,7 @@ function dd($data){
     die;
 }
 
-$posts = new QueryBuilder;
-$posts = $posts->getAll();
+$posts = QueryBuilder::getAll();
 
 ?>
 <!DOCTYPE html>

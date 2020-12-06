@@ -1,7 +1,7 @@
 <?php
 class QueryBuilder
 {
-    public function getAll (){
+    public static function getAll (){
         $pdo = new PDO ('mysql:host=127.0.0.1;dbname=level_3_1', 'root', 'root');
         $sql = "SELECT * FROM posts";
         $statement = $pdo->prepare($sql);
