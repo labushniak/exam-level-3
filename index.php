@@ -1,12 +1,7 @@
 <?php
 include_once 'components/QueryBuilder.php';
+include_once 'components/Debug.php'
 
-function dd($data){
-    echo "<pre>";
-    var_dump($data);
-    echo "</pre>";
-    die;
-}
 
 $posts = QueryBuilder::getAll('posts');
 
