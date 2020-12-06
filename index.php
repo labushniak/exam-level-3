@@ -1,3 +1,23 @@
+<?php
+
+$posts = [
+    [
+        'id' => 1,
+        'title' => 'Post1 title',
+    ],
+    [
+        'id' => 2,
+        'title' => 'Post1 title',
+    ],
+
+    [
+        'id' => 3,
+        'title' => 'Post1 title',
+    ],
+
+];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,30 +49,19 @@
             <table class="table">
             <thead>
                 <tr>
-                <th scope="col">#</th>
+                <th scope="col">ID</th>
                 <th scope="col">Title</th>
                 <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
+                <?php foreach ($posts as $post):?>
                 <tr>
-                <th scope="row">1</th>
-                <td>Post1 title</td>
+                <th scope="row"><?php echo $post['id']?></th>
+                <td><?php echo $post['title']?></td>
                 <td><a href="" class="btn btn-info">edit</a>  <a href="#"class="btn btn-danger">delete</a></td>
-                
                 </tr>
-                <tr>
-                <th scope="row">2</th>
-                <td>Post2 title</td>
-                <td><a href="" class="btn btn-info">edit</a>  <a href="#"class="btn btn-danger">delete</a></td>
-                
-                </tr>
-                <tr>
-                <th scope="row">3</th>
-                <td>Title Hello World</td>
-                <td><a href="" class="btn btn-info">edit</a>  <a href="#"class="btn btn-danger">delete</a></td>
-                
-                </tr>
+                <? endforeach; ?>
             </tbody>
             </table>
   </div>
