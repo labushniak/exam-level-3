@@ -1,28 +1,19 @@
 <?php
-/*
-    $posts = [
-        [
-        'id' => 1,
-        'title' => 'Post1 title',
-    ],
-    [
-        'id' => 2,
-        'title' => 'Post2 title',
-    ],
+function dd($data){
+    echo "<pre>";
+    var_dump($data);
+    echo "</pre>";
+    die;
 
-    [
-        'id' => 3,
-        'title' => 'Post3 title',
-    ],
-
-];
-*/
+}
 
 $pdo = new PDO ('mysql:host=127.0.0.1;dbname=level_3_1', 'root', 'root');
 $sql = "SELECT * FROM posts";
 $statement = $pdo->prepare($sql);
 $statement->execute();
 $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+dd($posts);
 
 ?>
 <!DOCTYPE html>
