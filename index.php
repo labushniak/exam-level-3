@@ -1,21 +1,28 @@
 <?php
-
-$posts = [
-    [
+/*
+    $posts = [
+        [
         'id' => 1,
         'title' => 'Post1 title',
     ],
     [
         'id' => 2,
-        'title' => 'Post1 title',
+        'title' => 'Post2 title',
     ],
 
     [
         'id' => 3,
-        'title' => 'Post1 title',
+        'title' => 'Post3 title',
     ],
 
 ];
+*/
+
+$pdo = new PDO ('mysql:host=127.0.0.1;dbname=level_3_1', 'root', 'root');
+$sql = "SELECT * FROM posts";
+$statement = $pdo->prepare($sql);
+$statement->execute();
+$posts = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>
