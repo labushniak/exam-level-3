@@ -32,6 +32,32 @@ class QueryBuilder
         $statement->execute();
         $post = $statement->fetch(PDO::FETCH_ASSOC);
         return $post;
-    }    
+    }
+    
+    public function update ($table, $id, $data = []){
+        
+        $quyery_string = '';
+
+        foreach ($data as $key => $value){
+            $quyery_string .="`". $key . '`= ?,';
+        }
+
+        $quyery_string = rtrim($quyery_string,",");
+
+        $sql = "UPDATE {$table} SET {$quyery_string} WHERE id = ?";
+        
+        $statement = $this->pdo->prepare($sql);
+
+        $i=1;
+        
+        foreach ($data as $key => $value){
+            $statement->bindValue($i, $value);
+            $i++;
+        }
+        $statement->bindValue($i, $id);
+        $statement->execute();
+
+        return;
+    }  
 
 }

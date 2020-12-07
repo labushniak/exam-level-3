@@ -1,9 +1,8 @@
 <?php
 include_once 'components/QueryBuilder.php';
-include_once 'components/Debug.php'
+include_once 'components/Debug.php';
 
-
-$posts = QueryBuilder::getAll('posts');
+$posts = QueryBuilder::getInstance()->getAll('posts');
 
 ?>
 <!DOCTYPE html>
@@ -47,7 +46,8 @@ $posts = QueryBuilder::getAll('posts');
                 <tr>
                 <th scope="row"><?php echo $post['id']?></th>
                 <td><?php echo $post['title']?></td>
-                <td><a href="" class="btn btn-info">edit</a>  <a href="#"class="btn btn-danger">delete</a></td>
+                <td><a href="edit.php?id=<?php echo $post['id']?>" class="btn btn-info">edit</a>
+                    <a href="delete.php?id=<?php echo $post['id']?>"class="btn btn-danger">delete</a></td>
                 </tr>
                 <? endforeach; ?>
             </tbody>
