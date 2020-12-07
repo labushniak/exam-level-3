@@ -37,3 +37,19 @@ https://github.com/labushniak/exam-level-3/commit/3d06016cea8828334b3466952f6ffc
 https://github.com/labushniak/exam-level-3/commit/afc417f0bc3df47f00c390f73956b09cb5fd50d0
 
 12. Теперь нужно сделать, чтобы посты можно было удалять. Для этого создаю страницу deletepost.php. Подключаю все необходимые файлы, прописываю функцию delete так, как хочу использовать. Затем перехожу в QueryBuilder и создаю функцию delete. Сделал.
+https://github.com/labushniak/exam-level-3/commit/36e30281d42f0613c13aec4e7f36d5fcd9c70ccb
+
+13. На текущем этапе QueryBuilder завершен, так как его функций достаточно для данного мини-проекта.
+Документация к компоненту QueryBuilder:
+
+array QueryBuilder::getInstance()->getAll($table = 'название таблицы, string') //возвращает все строки из таблицы
+
+array QueryBuilder::getInstance()->getOne ($table= 'название таблицы, string', $id = 'идентификатор записи, тип int') //возвращает строку из таблицы с указанным id
+
+boolean QueryBuilder::getInstance()->update ($table= 'название таблицы, string', $id = 'идентификатор записи, тип int', $data ='массив с данными для стобцов таблицы, array') //обновляет данные в строке таблицы с указанным id. Если добавил, то возвращает true
+
+boolean QueryBuilder::getInstance()->insert ($table= 'название таблицы, string', $data ='массив с данными для стобцов таблицы, array') //добавляет строку с данными в таблицу, если добавил, то возвращает true
+
+boolean QueryBuilder::getInstance()->delete ($table= 'название таблицы, string', $id = 'идентификатор записи, тип int') //удаляет строку из таблицу, если удалил, то возвращает true
+
+
