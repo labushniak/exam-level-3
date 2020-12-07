@@ -30,7 +30,7 @@ $posts = QueryBuilder::getInstance()->getAll('posts');
 </nav>
 <div class="container">
   <div class="row">
-      <a href="#" class="btn btn-success">Add post</a>
+      <a href="addpost.php" class="btn btn-success">Add post</a>
           <href></href>
       </a>
             <table class="table">

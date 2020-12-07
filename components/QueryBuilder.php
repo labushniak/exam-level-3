@@ -49,15 +49,42 @@ class QueryBuilder
         $statement = $this->pdo->prepare($sql);
 
         $i=1;
-        
         foreach ($data as $key => $value){
             $statement->bindValue($i, $value);
             $i++;
         }
         $statement->bindValue($i, $id);
-        $statement->execute();
+        $result = $statement->execute();
 
-        return;
-    }  
+        return $result;
+    }
+
+    public function insert ($table, $data =[]){
+
+        //INSERT INTO `posts`(`id`, `title`) VALUES ([value-1],[value-2])
+        $insert_variables = '';
+        $insert_values = '';
+        foreach ($data as $key => $value){
+            $insert_variables .= "`" .$key ."`,";
+            $insert_values .= "?,";
+
+        }
+        $insert_variables = rtrim($insert_variables, ",");
+        $insert_values = rtrim($insert_values, ",");
+        
+        $sql = "INSERT INTO {$table} ({$insert_variables}) VALUES ({$insert_values})";
+        
+        $statement = $this->pdo->prepare($sql);
+        
+        $i=1;
+        foreach ($data as $key => $value){
+            $statement->bindValue($i, $value);
+            $i++;
+        }
+        
+        $result = $statement->execute();
+        
+        return $result;
+    }
 
 }
