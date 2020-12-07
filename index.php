@@ -47,7 +47,7 @@ $posts = QueryBuilder::getInstance()->getAll('posts');
                 <th scope="row"><?php echo $post['id']?></th>
                 <td><?php echo $post['title']?></td>
                 <td><a href="edit.php?id=<?php echo $post['id']?>" class="btn btn-info">edit</a>
-                    <a href="delete.php?id=<?php echo $post['id']?>"class="btn btn-danger">delete</a></td>
+                    <a href="deletepost.php?id=<?php echo $post['id']?>"class="btn btn-danger">delete</a></td>
                 </tr>
                 <? endforeach; ?>
             </tbody>
