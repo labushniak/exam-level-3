@@ -1,7 +1,9 @@
 <?php
+session_start();
 include_once 'components/QueryBuilder.php';
 include_once 'components/Debug.php';
 include_once 'components/Validate.php';
+include_once 'components/Flash.php';
 
 $post = QueryBuilder::getInstance()->getOne('posts', $_GET['id']);
 
@@ -18,13 +20,17 @@ if ($_POST['submit']){
     if(!$validate->result()){ //true - если валидация не пройдена
         //печать массива с ошибками
         foreach ($validate->errors() as $error){
-            echo $error . "<br>";
+            $errors .= $error . "<br>";
         }
-        
+        Flash::set ('danger', 'Ошибка при редактировании');
     } else {
         $result = QueryBuilder::getInstance()->update('posts', $_GET['id'], [    
         'title' => $_POST['title']
         ]);
+
+        Flash::set ('success', 'Пост отредактирован');
+        header('Location: index.php');
+        exit;
     }
 }
 ?>
@@ -37,6 +43,11 @@ if ($_POST['submit']){
 </head>
 <body>
     <h1>Edit post</h1>
+<?php 
+echo Flash::message('success');
+echo Flash::message('danger');
+echo $errors ?>
+
     <form action="" method="post">
         <div class="input-group mb-3">
             <div class="input-group-prepend">

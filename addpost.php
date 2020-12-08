@@ -1,7 +1,9 @@
 <?php
+session_start();
 include_once 'components/QueryBuilder.php';
 include_once 'components/Debug.php';
 include_once 'components/Validate.php';
+include_once 'components/Flash.php';
 
 if ($_POST['submit']){
     $validate = new Validate;
@@ -16,18 +18,18 @@ if ($_POST['submit']){
     if(!$validate->result()){ //true - если валидация не пройдена
         //печать массива с ошибками
         foreach ($validate->errors() as $error){
-            echo $error . "<br>";
+            $errors .= $error . "<br>";
         }
-
+        Flash::set ('danger', 'Пост не добавлен');
         } else { //если валидация пройдена
 
         $result = QueryBuilder::getInstance()->insert('posts', [    
         'title' => $_POST['title'],
         ]);
-
-        if($result){
-            header('Location: index.php');
-        }
+        Flash::set ('success', 'Пост добавлен');
+        header('Location: index.php');
+        exit;
+        
     }
 }
 ?>
@@ -39,6 +41,11 @@ if ($_POST['submit']){
     <title>Add post</title>
 </head>
 <body>
+
+<?php 
+echo Flash::message('danger');
+echo $errors;
+?>
     <h1>Add post</h1>
     <form action="" method="post">
         <div class="input-group mb-3">

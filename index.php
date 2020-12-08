@@ -1,6 +1,8 @@
 <?php
+session_start();
 include_once 'components/QueryBuilder.php';
 include_once 'components/Debug.php';
+include_once 'components/Flash.php';
 
 $posts = QueryBuilder::getInstance()->getAll('posts');
 
@@ -28,10 +30,14 @@ $posts = QueryBuilder::getInstance()->getAll('posts');
     </ul>
   </div>
 </nav>
+<?php 
+
+echo Flash::message('success'); 
+?>
 <div class="container">
   <div class="row">
       <a href="addpost.php" class="btn btn-success">Add post</a>
-          <href></href>
+          
       </a>
             <table class="table">
             <thead>
