@@ -25,7 +25,7 @@ if ($_POST['submit']){
         ]);
 
         Flash::set ('success', 'Пост отредактирован');
-        header('Location: index.php');
+        header('Location: /');
         exit;
     }
 }

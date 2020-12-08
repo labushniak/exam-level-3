@@ -29,7 +29,7 @@ echo Flash::message('success');
 ?>
 <div class="container">
   <div class="row">
-      <a href="addpost.php" class="btn btn-success">Add post</a>
+      <a href="/add" class="btn btn-success">Add post</a>
           
       </a>
             <table class="table">
@@ -45,8 +45,8 @@ echo Flash::message('success');
                 <tr>
                 <th scope="row"><?php echo $post['id']?></th>
                 <td><?php echo $post['title']?></td>
-                <td><a href="edit.php?id=<?php echo $post['id']?>" class="btn btn-info">edit</a>
-                    <a href="deletepost.php?id=<?php echo $post['id']?>"class="btn btn-danger">delete</a></td>
+                <td><a href="/edit?id=<?php echo $post['id']?>" class="btn btn-info">edit</a>
+                    <a href="/delete?id=<?php echo $post['id']?>"class="btn btn-danger">delete</a></td>
                 </tr>
                 <? endforeach; ?>
             </tbody>

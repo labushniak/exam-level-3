@@ -23,7 +23,7 @@ if ($_POST['submit']){
         'title' => $_POST['title'],
         ]);
         Flash::set ('success', 'Пост добавлен');
-        header('Location: index.php');
+        header('Location: /');
         exit;
         
     }

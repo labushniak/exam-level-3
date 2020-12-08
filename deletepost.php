@@ -6,6 +6,6 @@ if(isset($_GET['id'])){
     $post = QueryBuilder::getInstance()->delete('posts', $_GET['id']);
 
     if($post){
-        header('Location: index.php');
+        header('Location: /');
     }
 }
