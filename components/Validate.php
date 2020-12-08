@@ -38,6 +38,9 @@ class Validate
 
         if(!$this->errors){
             $this->result = true;
+            return false;
+        } else {
+            return true;
         }
         
     }

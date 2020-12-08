@@ -2,9 +2,14 @@
 
 class Flash
 {
-    public static function set($status, $message)
+    public static function set($status = null, $message = null)
     {
-        return $_SESSION[$status] = $message;
+        if($status && $message){
+            $_SESSION[$status] = $message;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static function message($status = NULL)
