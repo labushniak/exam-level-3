@@ -101,3 +101,4 @@ https://github.com/labushniak/exam-level-3/commit/fcc7a4045b35c431e94994a27f5753
 
 21. Документация к компоненту Router
 string Router::page ($link = "адрес с get-параметрами, string") //возращает полный путь к файлу из списка проверки, если в списке адрес отсутствует, то возвращает полный путь к 404.php
+https://github.com/labushniak/exam-level-3/commit/c432f5efbc5d4d7e887a346a1df7dbfce178d0ab
