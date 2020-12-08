@@ -87,4 +87,7 @@ boolean Flash::set ($status = 'статусы success если успешно, d
 
 string Flash::message($status = 'статусы success если успешно, danger - если сообщение об ошибке, string') //возвращает строку с флеш-сообщением.
 
-    
+https://github.com/labushniak/exam-level-3/commit/dcebc825a73209bc7bb5f1841c79b372d31b1a45
+
+19. Перед написание компонента Router выношу всю видимую часть в файл index.view.php, чтобы было легче работать.
+Также все инклуды выношу в отдельный файл init.php, чтобы удобней было контролировать подсоединенные файлы.
