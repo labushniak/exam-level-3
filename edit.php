@@ -1,17 +1,32 @@
 <?php
 include_once 'components/QueryBuilder.php';
 include_once 'components/Debug.php';
+include_once 'components/Validate.php';
 
 $post = QueryBuilder::getInstance()->getOne('posts', $_GET['id']);
 
-
-
-if ($_POST['title']){
-    $result = QueryBuilder::getInstance()->update('posts', $_GET['id'], [    
-    'title' => $_POST['title']
+if ($_POST['submit']){
+    $validate = new Validate;
+    $validate->check($_POST, [
+        'title' =>[
+            'requiered' => true,
+            'min' => 2,
+            'max' => 100
+        ]
     ]);
+    
+    if(!$validate->result()){ //true - если валидация не пройдена
+        //печать массива с ошибками
+        foreach ($validate->errors() as $error){
+            echo $error . "<br>";
+        }
+        
+    } else {
+        $result = QueryBuilder::getInstance()->update('posts', $_GET['id'], [    
+        'title' => $_POST['title']
+        ]);
+    }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +44,7 @@ if ($_POST['title']){
             </div>
             <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="title" value="<?php echo $post['title']; ?>">
         </div>
-        <button type="submit" class="btn btn-danger btn-lg">Edit post</button> 
+        <button type="submit" class="btn btn-danger btn-lg" name="submit" value="submit">Edit post</button> 
     </form>
 </body>
 </html>
